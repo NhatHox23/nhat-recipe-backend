@@ -130,3 +130,8 @@ dmypy.json
 
 # Pycharm generator
 .idea
+
+# Ignore migrations if we working on team
+**/migrations/**
+!**/migrations
+!**/migrations/__init__.py
