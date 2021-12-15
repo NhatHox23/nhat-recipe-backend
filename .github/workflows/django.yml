@@ -27,7 +27,5 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       run: |
-        ls
-        cd ..
-        ls
+        cd /home/runner/work/nhat-recipe-backend/app
         python manage.py test
