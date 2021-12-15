@@ -13,11 +13,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      - uses: actions/checkout@v2
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
 
-    - name: Waiting for PostgreSQL
-      run: docker-compose run app sh -c "python manage.py wait_for_db"
-    - name: Run Django Tests
-      run: docker-compose run app sh -c "python manage.py test"
+      - name: Waiting for PostgreSQL
+        run: docker-compose run app sh -c "python manage.py wait_for_db"
+
+      - name: Run Django Tests
+        run: docker-compose run app sh -c "python manage.py test"
