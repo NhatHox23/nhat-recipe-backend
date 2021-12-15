@@ -22,6 +22,7 @@ services:
 
   db:
     image: postgres:10-alpine
+    hostname: postgre
     environment:
       - POSTGRES_DB=nhatreciepe
       - POSTGRES_USER=postgres
