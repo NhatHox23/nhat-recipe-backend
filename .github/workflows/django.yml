@@ -28,4 +28,4 @@ jobs:
     - name: Run Tests
       run: |
         cd app/
-        ls
+        python manage.py test && flake8 .
