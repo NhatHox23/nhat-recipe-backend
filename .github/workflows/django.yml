@@ -28,6 +28,5 @@ jobs:
         pip install docker-compose
     - name: Run Tests
       run: |
-        docker-compose build
         docker-compose run app sh -c "python manage.py test"
 
