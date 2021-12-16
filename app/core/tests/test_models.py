@@ -23,7 +23,6 @@ class ModelTests(TestCase):
             email=email,
             password="test123"
         )
-        print(user.email)
         self.assertEqual(user.email, email.lower())
 
     def test_new_user_invalid_email(self):
