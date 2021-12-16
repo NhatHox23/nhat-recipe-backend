@@ -2,6 +2,8 @@ from django.shortcuts import render
 
 from rest_framework import generics, permissions, authentication
 
+from rest_framework import viewsets
+
 from rest_framework import status
 
 from rest_framework.response import Response
@@ -27,3 +29,19 @@ class TagListAPI(generics.ListAPIView):
         tag = Tag.objects.filter(user=request.user).order_by('-name')
         serializer = TagSerializer(tag, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class TagCreateAPI(generics.CreateAPIView):
+    """Create Tag API
+
+    ### Description:
+        - This API serve the purpose of creating Tag
+    """
+    authentication_classes = (authentication.TokenAuthentication,)
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def post(self, request, *args, **kwargs):
+        serializer = TagSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
